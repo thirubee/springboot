@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/traditional")
-public class HotelController {
+public class HotelTraditionalController {
 
   @RequestMapping(path = "/hotel/{version}", method = RequestMethod.GET)
   public @ResponseBody
