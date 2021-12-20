@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/nextgen")
-public class HotelRestController {
+public class HotelNextGenController {
 
   @RequestMapping(path = "/hotel/{version}", method = RequestMethod.GET)
   public String combineParam(@PathVariable("version") String version,
