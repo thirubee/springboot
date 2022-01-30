@@ -1,6 +1,11 @@
 package com.main.model;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
+
+  @Override
+  public int compareTo(Employee o) {
+    return o.getId();
+  }
 
   private int id;
   private String name;
