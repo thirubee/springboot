@@ -4,6 +4,8 @@ import com.main.model.Employee;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class ArrayListExample {
@@ -15,6 +17,9 @@ public class ArrayListExample {
     Employee magizh = new Employee(1, "nilan", "Hyderabad");
 
     List<Employee> list = Arrays.asList(nilan, magizh, thee);
+
+    Set<Employee> set = new TreeSet<>();
+    set.add(nilan);
 
     for (Employee x : list) {
       System.out.println(x.getId() + x.getName());
