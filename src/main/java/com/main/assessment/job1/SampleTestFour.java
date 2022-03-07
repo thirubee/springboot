@@ -13,7 +13,7 @@ public class SampleTestFour {
     return "a";
   }
 
-  public double doit(int x) {
+  public Double doit(int x) {
     return 1.0;
   }
 
