@@ -2,17 +2,15 @@ package com.main.assessment.job1;
 
 public class BaseClassWithFinalMethodTest extends BaseClass {
 
-  /**
-   * Can't override final method
-   */
-  /*void display() {
-    System.out.println("Child class");
-  }*/
+  @Override
+  public void display() {
+    super.display();
+  }
 }
 
 class BaseClass {
 
-  final void display() {
+   protected void display() {
     System.out.println("I'm parent");
   }
 }

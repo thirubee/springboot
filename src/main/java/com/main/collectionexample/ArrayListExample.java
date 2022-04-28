@@ -42,7 +42,7 @@ public class ArrayListExample {
     list.forEach(x -> System.out.println(x.getId() + x.getName()));
 
     /* Count */
-    Long count = list.stream().filter( x -> x.getId() > 1).count();
+    Long count = list.stream().filter(x -> x.getId() > 1).count();
     System.out.println(count);
 
     /* Comparator based on Employee Name */
@@ -52,7 +52,7 @@ public class ArrayListExample {
 
   }
 
-  private void printer(Employee employee){
+  private void printer(Employee employee) {
 
   }
 

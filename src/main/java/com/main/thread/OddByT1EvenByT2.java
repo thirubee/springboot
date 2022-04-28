@@ -1,58 +1,34 @@
 package com.main.thread;
 
+
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class OddByT1EvenByT2 {
 
-  int max = 20;
-  int val = 1;
-  Runnable odd = () -> {
-    synchronized (this) {
-      while (val < max) {
-        while (val % 2 == 0) {
-          try {
-            wait();
-          } catch (InterruptedException ex) {
-            ex.printStackTrace();
-          }
-        }
-        System.out.println(val);
-        val++;
-        notify();
-      }
-    }
-  };
-
-  Runnable even = () -> {
-    synchronized (this) {
-      while (val < max) {
-        while (val % 2 == 1) {
-          try {
-            wait();
-          } catch (InterruptedException ex) {
-            ex.printStackTrace();
-          }
-        }
-      }
-      System.out.println(val);
-      val++;
-      notify();
-    }
-  };
+  static AtomicInteger atomicInteger = new AtomicInteger(1);
 
   public static void main(String[] args) {
+    Runnable runnable = () -> {
+      while (atomicInteger.get() < 20) {
+        synchronized (atomicInteger) {
+          if (atomicInteger.get() % 2 == 0 && "Even".equals(Thread.currentThread().getName())) {
+            System.out.println("Even : " + atomicInteger.getAndIncrement());
+          } else {
+            System.out.println("Odd : " + atomicInteger.getAndIncrement());
+          }
+        }
+      }
+    };
 
-    OddByT1EvenByT2 oddByT1EvenByT2 = new OddByT1EvenByT2();
-    oddByT1EvenByT2.test();
-
-  }
-
-  void test() {
-    Thread t1 = new Thread(odd);
-    Thread t2 = new Thread(even);
-
-    t2.start();
+    Thread t1 = new Thread(runnable);
+    t1.setName("Even");
     t1.start();
 
+    Thread t2 = new Thread(runnable);
+    t2.setName("Odd");
+    t2.start();
 
   }
+
 
 }
