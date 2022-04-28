@@ -11,6 +11,7 @@ public class HashMapTesting {
     key.setValue("abc");
     hashMap.put(key, 1);
     key.setLength(12);
+    key = new Pojo();
     Integer i = hashMap.get(key);
     System.out.println(i);
   }
